@@ -31,7 +31,6 @@ function SEOResult(url: string) {
           },
         }
       );
-      console.log(response.data);
       setLoading(false);
       setSEOSummaryData(response.data);
     } catch (error) {
