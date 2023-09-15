@@ -1,4 +1,8 @@
-function Accordion({ data }: any) {
+
+
+
+
+function Accordion({ data }) {
   const { tasks } = data;
   return (
     <div className="accordion flex items-center justify-center">
