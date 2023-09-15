@@ -1,8 +1,8 @@
+interface AccordionProps<T = any> {
+  data: T;
+}
 
-
-
-
-function Accordion({ data }) {
+function Accordion({ data }: AccordionProps) {
   const { tasks } = data;
   return (
     <div className="accordion flex items-center justify-center">
