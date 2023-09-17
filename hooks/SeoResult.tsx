@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 
 function SEOResult(url: string) {
-  const [SEOSummaryData, setSEOSummaryData] = useState({});
+  const [SEOSummaryData, setSEOSummaryData] = useState<any>({});
   const [callIsMade, setCall] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isValidURL, setURLValidity] = useState(false);
