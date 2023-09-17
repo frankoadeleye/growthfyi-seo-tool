@@ -42,7 +42,8 @@ export default function Home() {
               </>
             ) : (
               <div className="flex flex-col text-center">
-                Request was successul, but DataForSeo provided No Result. <br />
+                Request was successful, but DataForSeo provided No Result.{" "}
+                <br />
                 Check if you added https:// or try again later
               </div>
             )}
