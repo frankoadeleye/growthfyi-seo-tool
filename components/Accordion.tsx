@@ -2,6 +2,17 @@ interface AccordionProps<T = any> {
   data: T;
 }
 
+const Details = ({ tasks, title }) => {
+  return (
+    <details className="w-full rounded-lg ring-1 ring-purple-400 cursor-pointer">
+      <summary className="px-4 py-6">{title}</summary>
+      <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400">
+        {tasks}
+      </p>
+    </details>
+  );
+};
+
 function Accordion({ data }: AccordionProps) {
   const { tasks } = data;
   return (
@@ -11,41 +22,23 @@ function Accordion({ data }: AccordionProps) {
           <h2 className="text-2xl font-semibold text-center">SEO Result</h2>
           <br />
           <div className="space-y-4">
-            <details className="w-full rounded-lg ring-1 ring-purple-400 cursor-pointer">
-              <summary className="px-4 py-6">Site Address</summary>
-              <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400">
-                {tasks[0]?.data?.url}
-              </p>
-            </details>
-            <details className="w-full rounded-lg ring-1 ring-purple-400 cursor-pointer">
-              <summary className="px-4 py-6">What is the Description?</summary>
-              <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400">
-                {tasks[0]?.result[0]?.items[0]?.meta?.description}
-              </p>
-            </details>
-            <details className="w-full rounded-lg ring-1 ring-purple-400 cursor-pointer">
-              <summary className="px-4 py-6">
-                What is the On Page Score?
-              </summary>
-              <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400">
-                Score: {tasks[0]?.result[0]?.items[0]?.onpage_score}
-              </p>
-            </details>
-            <details className="w-full rounded-lg ring-1 ring-purple-400 cursor-pointer">
-              <summary className="px-4 py-6">How Many Internal Links</summary>
-              <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400">
-                {tasks[0]?.result[0]?.items[0]?.meta?.internal_links_count}{" "}
-                Internal Links
-              </p>
-            </details>
-            <details className="w-full rounded-lg ring-1 ring-purple-400 cursor-pointer">
-              <summary className="px-4 py-6">
-                What is the resource type?
-              </summary>
-              <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400">
-                {tasks[0]?.result[0]?.items[0]?.resource_type} Resource
-              </p>
-            </details>
+            <Details tasks={tasks[0]?.data?.url} title="Site Address" />
+            <Details
+              tasks={tasks[0]?.result[0]?.items[0]?.meta?.description}
+              title="What is the Description?"
+            />
+            <Details
+              tasks={tasks[0]?.result[0]?.items[0]?.onpage_score}
+              title=" What is the On Page Score?"
+            />
+            <Details
+              tasks={tasks[0]?.result[0]?.items[0]?.meta?.internal_links_count}
+              title="How Many Internal Links"
+            />
+            <Details
+              tasks={tasks[0]?.result[0]?.items[0]?.resource_type} Resource
+              title="What is the resource type?"
+            />
           </div>
         </div>
       </div>

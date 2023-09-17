@@ -9,7 +9,8 @@ import Accordion from "@/components/Accordion";
 export default function Home() {
   const [url, setUrl] = useState("");
 
-  const { SEOSummaryData, callIsMade, loading, SEOSummary } = SEOResult(url);
+  const { SEOSummaryData, callIsMade, loading, SEOSummary, isValidURL } =
+    SEOResult(url);
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -27,13 +28,29 @@ export default function Home() {
           url={url}
         />
       </form>
-      <br/>
-      {callIsMade ? loading ? <div>Loading . . .</div>
-       : 
-      <>
-      <Accordion data={SEOSummaryData} />
-      <div>More details can be added to result...</div>
-      </> : ""}
+      <br />
+      {callIsMade && !isValidURL ? "Please Enter a valid Url" : ""}
+      {callIsMade && isValidURL ? (
+        loading ? (
+          <div>Loading . . .</div>
+        ) : (
+          <>
+            {SEOSummaryData?.tasks[0].result !== null ? (
+              <>
+                <Accordion data={SEOSummaryData} />
+                <div>More details can be added to result...</div>
+              </>
+            ) : (
+              <div className="flex flex-col text-center">
+                Request was successul, but DataForSeo provided No Result. <br />
+                Check if you added 'https://' or try again later
+              </div>
+            )}
+          </>
+        )
+      ) : (
+        ""
+      )}
     </main>
   );
 }
