@@ -2,13 +2,11 @@ interface AccordionProps<T = any> {
   data: T;
 }
 
-const Details = ({ tasks, title }) => {
+const Details = ({ tasks, title }: { tasks: string[]; title: string }) => {
   return (
     <details className="w-full rounded-lg ring-1 ring-purple-400 cursor-pointer">
       <summary className="px-4 py-6">{title}</summary>
-      <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400">
-        {tasks}
-      </p>
+      <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400">{tasks}</p>
     </details>
   );
 };
@@ -36,7 +34,7 @@ function Accordion({ data }: AccordionProps) {
               title="How Many Internal Links"
             />
             <Details
-              tasks={tasks[0]?.result[0]?.items[0]?.resource_type} Resource
+              tasks={tasks[0]?.result[0]?.items[0]?.resource_type}
               title="What is the resource type?"
             />
           </div>
